@@ -1,0 +1,14 @@
+<h2>
+  <a href="#"><%= sanitize(@post.title) %></a>
+</h2>
+<p class="lead">
+  by <a href="index.php">Admin</a>
+</p>
+<p>
+  <span class="glyphicon glyphicon-time"></span> Posted on:
+</p>
+<hr>
+<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+<hr>
+<%= sanitize(@post.body) %>
+<hr>
