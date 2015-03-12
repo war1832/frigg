@@ -78,6 +78,18 @@
                     </div>
                     <!-- /.input-group -->
                 </div>
+                
+                
+                <div class="well">
+                <% if user_signed_in? %>
+                    <p>
+                      Welcome: <b><%= current_user.email %></b>
+                    </p>
+                    <%= link_to "Logout", destroy_user_session_path, :method => 'delete' %>
+                <% else %>
+                  <%= render :file => '/devise/sessions/new' %>
+                <% end %>
+                </div>
 
                 <!-- Blog Categories Well -->
                 <div class="well">
@@ -118,7 +130,7 @@
                     <h4>Side Widget Well</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>
-
+                
             </div>
 
         </div>
