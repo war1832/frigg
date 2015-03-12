@@ -1,5 +1,6 @@
 <h1 class="page-header">
   Frigg CMS
-  <small>Secondary Text</small>
+  <small>by Altoros Rocks</small>
 </h1>
+<%= current_user %>
 <%= render(@posts) %>
