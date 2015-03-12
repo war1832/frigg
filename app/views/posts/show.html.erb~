@@ -2,7 +2,7 @@
   <a href="#"><%= sanitize(@post.title) %></a>
 </h2>
 <p class="lead">
-  by <a href="index.php">Admin</a>
+  by <a href="#">Admin</a>
 </p>
 <p>
   <span class="glyphicon glyphicon-time"></span> Posted on:
@@ -12,3 +12,5 @@
 <hr>
 <%= sanitize(@post.body) %>
 <hr>
+<%= render :partial => 'comments/new' %>
+<%= render :partial => @post.comments %>

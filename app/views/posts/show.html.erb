@@ -12,3 +12,5 @@
 <hr>
 <%= sanitize(@post.body) %>
 <hr>
+<%= render :partial => 'comments/new' %>
+<%= render :partial => @post.comments %>
