@@ -3,7 +3,7 @@
 <h4>Leave a Comment:</h4>
  <%= form_for [@post, Comment.new] do |f| %>
     <div class="form-group">
-     <%= f.text_area :body, :class => "form-control" :rows => "10" %>
+     <%= f.text_area :body, :class => "form-control", :rows => "10" %>
 
     </div>
     <%= f.submit "Submit", :class => "btn btn-primary" %>

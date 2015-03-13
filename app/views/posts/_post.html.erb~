@@ -1,13 +1,13 @@
-<h2>
-  <%= link_to sanitize(post.title), post %>
-</h2>
-<p class="lead">
-  by <a href="#">Admin</a>
-</p>
-<p>
-  <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %>
-</p>
-<hr>
-<%= truncate(post.body, :length => 500, :escape => false) %>
-<hr>
-<%= link_to 'Read More', post, :class =>'btn btn-primary' %>
+<div class="well">
+  <h2>
+    <%= link_to sanitize(post.title), post %>
+  </h2>
+  <p>
+    <span class="glyphicon glyphicon-usert"></span> Posted by: <a href="#">Admin</a> |
+    <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> 
+  </p>
+  <hr>
+  <%= truncate(post.body, :length => 500, :escape => false) %>
+  <hr>
+  <%= link_to 'Read More', post, :class =>'btn-xs btn-primary' %>
+</div>

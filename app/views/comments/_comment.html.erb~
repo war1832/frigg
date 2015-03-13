@@ -3,10 +3,14 @@
       <img class="media-object" src="http://placehold.it/64x64" alt="">
     </a>
     <div class="media-body">
-      <h4 class="media-heading">Anonymous
-        <small><%= comment.updated_at %></small>
+      <h4 class="media-heading">
+        <% if comment.user %>
+          <%= comment.user.username.capitalize %>
+        <% else %>
+        Anonymous
+        <% end %>
+        <small><%= time_ago_in_words comment.updated_at %></small>
       </h4>
-      <%= sanitize(comment.body) %>
+      <%= strip_tags comment.body %>
     </div>
   </div>
-

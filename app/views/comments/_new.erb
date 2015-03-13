@@ -4,7 +4,6 @@
  <%= form_for [@post, Comment.new] do |f| %>
     <div class="form-group">
      <%= f.text_area :body, :class => "form-control", :rows => "10" %>
-
     </div>
     <%= f.submit "Submit", :class => "btn btn-primary" %>
 <% end %>

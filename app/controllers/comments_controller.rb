@@ -1,9 +1,17 @@
 class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params)
-    redirect_to @post
+    comment = @post.comments.build comment_params
+    comment.user_id = current_user.id if current_user
+    respond_to do |format| 
+      if comment.save
+       format.html { redirect_to @post }
+       format.json { render :show, status: :created, location: @post }
+      else
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+    end
   end
+
   private
   def comment_params
     params[:comment].permit(:body)

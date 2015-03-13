@@ -29,13 +29,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Frigg</a>
+                 <%= link_to "Frigg", root_path, :class => "navbar-brand" %>
+                <a class="" href="#">Frigg</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                       <%= link_to "Home", root_path %>
                     </li>
                     <li>
                         <a href="#">Services</a>
@@ -80,7 +81,7 @@
                 <div class="well">
                 <% if user_signed_in? %>
                     <p>
-                      Welcome: <b><%= current_user.username %></b>
+                      Welcome: <b><%= current_user.username.capitalize %></b>
                     </p>
                     <%= link_to "Logout", destroy_user_session_path, :method => 'delete' %>
                 <% else %>
