@@ -80,7 +80,7 @@
                 <div class="well">
                 <% if user_signed_in? %>
                     <p>
-                      Welcome: <b><%= current_user.email %></b>
+                      Welcome: <b><%= current_user.username.capitalize %></b>
                     </p>
                     <%= link_to "Logout", destroy_user_session_path, :method => 'delete' %>
                 <% else %>
