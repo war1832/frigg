@@ -1,14 +1,12 @@
 <h2>
-  <a href="#"><%= sanitize(post.title) %></a>
+  <%= link_to sanitize(post.title), post %>
 </h2>
 <p class="lead">
   by <a href="#">Admin</a>
 </p>
 <p>
-  <span class="glyphicon glyphicon-time"></span> Posted on:
+  <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %>
 </p>
-<hr>
-<img class="img-responsive" src="http://placehold.it/900x300" alt="">
 <hr>
 <%= truncate(sanitize(post.body), lenght: 120)%>
 <hr>
