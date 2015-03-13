@@ -8,6 +8,6 @@
   <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %>
 </p>
 <hr>
-<%= truncate(sanitize(post.body), lenght: 120)%>
+<%= truncate(post.body, :length => 500, :escape => false) %>
 <hr>
 <%= link_to 'Read More', post, :class =>'btn btn-primary' %>
