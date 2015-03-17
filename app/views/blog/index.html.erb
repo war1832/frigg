@@ -3,3 +3,5 @@
   <small>by Altoros Rocks</small>
 </h1>
 <%= render(@posts) %>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+<br>

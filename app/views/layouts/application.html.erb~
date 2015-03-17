@@ -30,7 +30,6 @@
                     <span class="icon-bar"></span>
                 </button>
                  <%= link_to "Frigg", root_path, :class => "navbar-brand" %>
-                <a class="" href="#">Frigg</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -83,7 +82,12 @@
                     <p>
                       Welcome: <b><%= current_user.username.capitalize %></b>
                     </p>
-                    <%= link_to "Logout", destroy_user_session_path, :method => 'delete' %>
+                    <ul>
+                      <li><%= link_to "Add Post", new_post_path %></li>
+                      <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                      <li><%= link_to "Listing Posts", posts_path %></li>
+                      <li><%= link_to "Logout", destroy_user_session_path, :method => 'delete' %></li>
+                    </ul>
                 <% else %>
                   <%= render :file => '/devise/sessions/new' %>
                 <% end %>
