@@ -83,10 +83,22 @@
                       Welcome: <b><%= current_user.username.capitalize %></b>
                     </p>
                     <ul>
-                      <li><%= link_to "Listing Posts", posts_path %></li>
-                      <li><%= link_to "Add Post", new_post_path %></li>
-                      <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                      <li><%= link_to "Logout", destroy_user_session_path, :method => 'delete' %></li>
+                      <li>
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                        <%= link_to "Listing Posts", posts_path %>
+                      </li>
+                      <li>
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <%= link_to "Add Post", new_post_path %>
+                      </li>
+                      <li>
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <%= link_to "Edit Profile", edit_user_registration_path %>
+                      </li>
+                      <li>
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        <%= link_to "Logout", destroy_user_session_path, :method => 'delete' %>
+                      </li>
                     </ul>
                 <% else %>
                   <%= render :file => '/devise/sessions/new' %>
