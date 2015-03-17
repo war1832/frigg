@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :comments
+  has_many :posts
   attr_accessor :login
 
   devise :database_authenticatable, :registerable,

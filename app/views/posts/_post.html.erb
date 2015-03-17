@@ -3,7 +3,7 @@
     <%= link_to sanitize(post.title), post %>
   </h2>
   <p>
-    <span class="glyphicon glyphicon-user"></span> Posted by: <a href="#">Admin</a> |
+    <span class="glyphicon glyphicon-user"></span> Posted by: <a href="#"><%= post.user.username.capitalize %></a> |
     <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> 
   </p>
   <hr>

@@ -1,6 +1,9 @@
 <h2>
   <%= link_to sanitize(@post.title), @post %>
 </h2>
+<p class="lead">
+  by <a href="#"><%= @post.user.username.capitalize%></a>
+</p>
 <p>
   <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words @post.updated_at %>
 </p>
