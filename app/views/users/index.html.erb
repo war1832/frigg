@@ -1,0 +1,12 @@
+<div class="users row">
+  <% @users.each do |user| %>
+    <div class="panel panel-default">
+      <%= link_to user_path(user) do %>
+      <div class="panel-body">
+        <%= image_tag user.gravatar_url(:rating => 'R', :secure => true) %>
+        <p><%= user.username.capitalize %></p>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
