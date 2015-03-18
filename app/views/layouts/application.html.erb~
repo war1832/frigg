@@ -76,7 +76,7 @@
                     </div>
                     <!-- /.input-group -->
                 </div>
-    
+                
                 <div class="well">
                 <% if user_signed_in? %>
                     <p>
@@ -92,7 +92,7 @@
                         <%= link_to "Add Post", new_post_path %>
                       </li>
                       <li>
-                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="glyphicon glyphicon-pencil"></span>
                         <%= link_to "Edit Profile", edit_user_registration_path %>
                       </li>
                       <li>
