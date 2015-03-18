@@ -1,9 +1,9 @@
 <div class="media">
   <a class="pull-left" href="#">
   <% if comment.user %>
-    <%= image_tag current_user.gravatar_url(:rating => 'R', :secure => true) %>
+    <%= image_tag comment.user.gravatar_url(:rating => 'R', :secure => true) %>
   <% else %>
-    <img class="media-object" src="http://placehold.it/80x80">
+    <&= image_tag "anonymous.jpeg" %>
   <% end %>
   </a>
   <div class="media-body">

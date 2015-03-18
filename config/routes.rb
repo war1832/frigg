@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :comments, :only => [:create]
   end
   
+  mount Ckeditor::Engine => '/ckeditor'
+  
   resources :home
   get 'home/index'
   root 'home#index'
