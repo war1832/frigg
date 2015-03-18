@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, :only => [:create]
   end
-  resources :blog
   
-  get 'blog/index'
-  root 'blog#index'
+  resources :home
+  get 'home/index'
+  root 'home#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
