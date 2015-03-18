@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_many :posts
   attr_accessor :login
 
+  include Gravtastic
+  gravtastic
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable,
@@ -13,7 +16,7 @@ class User < ActiveRecord::Base
     :uniqueness => {
     :case_sensitive => false
   }
-  
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

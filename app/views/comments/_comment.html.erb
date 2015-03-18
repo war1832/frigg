@@ -1,16 +1,20 @@
-  <div class="media">
-    <a class="pull-left" href="#">
-      <img class="media-object" src="http://placehold.it/64x64" alt="">
-    </a>
-    <div class="media-body">
-      <h4 class="media-heading">
-        <% if comment.user %>
-          <%= comment.user.username.capitalize %>
-        <% else %>
-        Anonymous
-        <% end %>
-        <small><%= time_ago_in_words comment.updated_at %></small>
-      </h4>
-      <%= strip_tags comment.body %>
+<div class="media">
+  <a class="pull-left" href="#">
+  <% if comment.user %>
+    <%= image_tag comment.user.gravatar_url(:rating => 'R', :secure => true) %>
+  <% else %>
+    <img class="media-object" src="http://placehold.it/80x80">
+  <% end %>
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <% if comment.user %>
+        <%= comment.user.username.capitalize %>
+      <% else %>
+      Anonymous
+      <% end %>
+      <small><%= time_ago_in_words comment.updated_at %></small>
+    </h4>
+    <%= strip_tags comment.body %>
     </div>
-  </div>
+</div>

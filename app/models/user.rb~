@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, 
+         :confirmable,
          :authentication_keys => [:login]
 
   validates :username,
@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
     :uniqueness => {
     :case_sensitive => false
   }
+  
+  include Gravtastic
+  gravtastic
   
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

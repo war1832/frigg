@@ -28,6 +28,7 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem "ckeditor"
 gem 'will_paginate-bootstrap'
+gem 'gravtastic'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
