@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   
   mount Ckeditor::Engine => '/ckeditor'
   
-  resources :home
   get 'home/index'
   root 'home#index'
   
