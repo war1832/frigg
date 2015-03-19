@@ -1,18 +1,10 @@
 <div class="media">
   <a class="pull-left" href="#">
-  <% if comment.user %>
-    <%= image_tag comment.user.gravatar_url(:rating => 'R', :secure => true) %>
-  <% else %>
-    <%= image_tag "anonymous.jpeg" %>
-  <% end %>
+     <%= image_tag comment_avatar_url comment.user%>
   </a>
   <div class="media-body">
     <h4 class="media-heading">
-      <% if comment.user %>
-        <%= comment.user.username.capitalize %>
-      <% else %>
-      Anonymous
-      <% end %>
+      <%= username comment.user %>
       <small><%= time_ago_in_words comment.updated_at %></small>
     </h4>
     <%= strip_tags comment.body %>

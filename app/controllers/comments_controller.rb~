@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
        format.json { render :show, status: :created, location: @post }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 

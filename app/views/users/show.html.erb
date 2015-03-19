@@ -1,12 +1,13 @@
 <div class="row">
     <div class="col-sm-4 col-md-3">
         <h1><%= @user.username.capitalize %></h1>
-        <%= image_tag @user.gravatar_url(:rating => 'R', :secure => true), :class => "img-responsive" %>
+        <%= image_tag avatar_url(@user, 165), :class => "img-responsive" %>
+        <hr>
         <ul>
             <%= content_tag(:li, ("Age: " + distance_of_time_in_words(Time.now, @user.date_of_birth) + " old")) unless @user.date_of_birth.blank? %>
         </ul>
     </div>
-    <div class="feed">
+    <div class="col-sm-8 col-md-9">
         <h3>Social Feed Coming</h3>
         <p>Put a couple of lines of text here and see how it scrolls</p>
     </div>
