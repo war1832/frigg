@@ -12,6 +12,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @blog = Blog.find(params[:id])
+    render 'blog_not_found' unless @blog
   end
 
   # GET /blogs/new
