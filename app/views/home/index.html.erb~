@@ -1,2 +1,26 @@
-<h1>Your idea needs a great website</h1>
-<small>It's surprisingly easy to create a unique website, blog or online store</small>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Your idea needs a great website</h1>
+    <small>It's surprisingly easy to create a unique website, blog or online store</small>
+    <hr>
+    <div class="well">
+      <h2>Easy Blogging</h2>
+      <p>
+        Grow your community and share your blog with the world. Our blogging tools bring your content to life and support your unique voice. Start a blog today, your audience is waiting.
+      </p>
+      <hr>
+      <h4>Make An Amazing Blog In Minutes</h4>
+      <p>Starting a blog with Weebly is simple. The flexible drag and drop interface helps you build blog content quickly and easily. Powerful design and publishing elements let you focus on your content while Weebly services pull all the weight in the background.</p>
+      <hr>
+      <h4>Nothing is Off Limits For Your Blog</h4>
+      <p>Full control over layout and post structure allow you to create exceptional blog sites. Complete category, tag, and sidebar customization provide the key navigation and interaction elements modern blog visitors crave. Advanced comment management tools help you customize moderation and approval settings to fit your specific needs. If you can think it up, Weebly blogging software can make it happen</p>
+      <hr>
+      <h4>Free Blog Templates</h4>
+      <p>Weebly's free blog templates can work as stand alone sites or pieces of a larger website. Free blog hosting ensures your content loads quickly and remains available to readers. Blog templates can be fully customized and altered to fit your goals. Weebly blog design is only limited by your imagination</p>
+      <hr>
+      <h4>Media, Widgets, Success!</h4>
+      <p></p>
+      <hr>
+    </div>
+  </div>
+</div>
