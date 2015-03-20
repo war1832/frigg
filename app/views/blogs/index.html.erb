@@ -1,31 +1,24 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Blogs</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Second title</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+        <tr>
+          <th>Url Name</th>
+          <th>Title</th>
+          <th>Second Title</th>
+          <th class="text-center" colspan="4">Actions</th>
+        </tr>
+      </thead>
     <% @blogs.each do |blog| %>
       <tr>
+        <td><%= blog.name %></td>
         <td><%= blog.title %></td>
         <td><%= blog.second_title %></td>
-        <td><%= blog.user %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add Post', new_blog_post_path(blog) %></td>
       </tr>
     <% end %>
-  </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Blog', new_blog_path %>

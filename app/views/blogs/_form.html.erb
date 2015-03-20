@@ -1,4 +1,4 @@
-<%= form_for(@blog) do |f| %>
+<%= form_for @blog, :html => {:class => 'form-horizontal' } do |f| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
@@ -11,19 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  
+  <div class="form-group">
+    <%= f.label :title, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :second_title %><br>
-    <%= f.text_field :second_title %>
+  
+  <div class="form-group">
+    <%= f.label :second_title, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+      <%= f.text_field :second_title, class: "form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
   </div>
 <% end %>
