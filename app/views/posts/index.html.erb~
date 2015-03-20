@@ -6,4 +6,3 @@
 <hr>
 <% end %>
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-<br>

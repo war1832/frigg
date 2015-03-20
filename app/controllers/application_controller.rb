@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+  
+  def not_found
+    render "shared/not_found"
+  end
 
   protected
   def configure_permitted_parameters

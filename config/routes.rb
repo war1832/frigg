@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :blogs, :path => "b" do
     resources :posts do
       resources :comments, :only => [:create]
@@ -7,11 +8,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show]
-
+  
   mount Ckeditor::Engine => '/ckeditor'
   
   get 'home/index'
   root 'home#index'
+  match '*unmatched_route', :to => 'application#not_found', :via => :all
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

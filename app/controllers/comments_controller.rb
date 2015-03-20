@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
     comment.user = current_user
     respond_to do |format| 
       if comment.save
-       format.html { redirect_to @post }
+       format.html { redirect_to blog_post_path(blog_id: @post.blog.name,
+                                                id: @post.id  ) }
        format.json { render :show, status: :created, location: @post }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
