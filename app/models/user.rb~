@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :blog
+  has_many :blogs
   attr_accessor :login
 
   include Gravtastic
@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
         where(username: conditions[:username]).first
       end
     end
+  end
+  
+  def self.find(input)
+    input.to_i == 0 ? find_by_name(input) : super
   end
   
 end

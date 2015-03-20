@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.find(input)
+    input.to_i == 0 ? find_by_username(input) : super
+  end
+  
 end

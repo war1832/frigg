@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @blog = Blog.find_by_name(params[:name])
+    @blog = Blog.find(params[:id])
   end
 
   # GET /blogs/new

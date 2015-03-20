@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:index]
   before_action :authenticate_user!, except: [:show]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.paginate(page: params[:page], per_page: 5)
+    @posts = @blog.posts.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /posts/1
@@ -27,7 +28,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    @post.blog = current_user.blogs.find(params[:blog_id])
+    @post.blog = current_user.blogs.find_by_name(params[:blog_id])
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -68,7 +69,11 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-
+    
+    def set_blog
+      @blog = Blog.find(params[:blog_id])
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :body)

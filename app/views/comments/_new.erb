@@ -1,7 +1,6 @@
 <div class="well">
 <h4>Leave a Comment:</h4>
- <%= form_for [@post, Comment.new], url: blog_post_comments_path(:post_id => @post.id,
-                                                     :blog_id => @post.blog.id) do |f| %>
+ <%= form_for [@post, Comment.new], url: blog_post_comments_path(:post_id => @post.id) do |f| %>
     <div class="form-group">
      <%= f.text_area :body, :class => "form-control", :rows => "10" %>
     </div>

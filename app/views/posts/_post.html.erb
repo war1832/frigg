@@ -1,16 +1,16 @@
 <div class="well">
   <h2>
-    <%= link_to sanitize(post.title), blog_post_path(:id =>post,
-                                                     :blog_id => post.blog.id) %>
+    <%= link_to sanitize(post.title), blog_post_path(:id =>post.id,
+                                                     :blog_id => post.blog.name) %>
   </h2>
   <p>
-    <span class="glyphicon glyphicon-user"></span> Posted by: <a href="#"><%= post.user.username.capitalize %></a> |
+    <span class="glyphicon glyphicon-user"></span> Posted by: <%= link_to post.user.username.capitalize, post.user %> |
     <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> 
   </p>
   <hr>
   <%= truncate(post.body, :length => 500, :escape => false) %>
   <hr>
   <%= link_to 'Read More', blog_post_path(:id =>post,
-                                          :blog_id => post.blog.id),
+                                          :blog_id => post.blog.name),
                                           :class =>'btn-xs btn-primary' %>
 </div>

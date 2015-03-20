@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  resources :blogs do
+  resources :blogs, :path => "b" do
     resources :posts do
       resources :comments, :only => [:create]
     end
   end
-  
-  get '/:name', to: 'blogs#show'
-  
+
   devise_for :users
   resources :users, only: [:index, :show]
-  
+
   mount Ckeditor::Engine => '/ckeditor'
   
   get 'home/index'

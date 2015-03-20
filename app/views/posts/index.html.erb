@@ -2,9 +2,9 @@
 <% @posts.each do |post| %>
   <h2><%= post.title %></h2>
   <%= truncate(post.body, :length => 100, :escape => false) %>
-  <%= link_to 'Show', post, :class =>'btn-xs btn-primary' %>
-  <%= link_to 'Edit', edit_post_path(post), :class =>'btn-xs btn-primary' %>
-  <%= link_to 'Destroy', post, :class =>'btn-xs btn-primary', method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Show', blog_post_path(:id => post.id), :class =>'btn-xs btn-primary' %>
+  <%= link_to 'Edit', edit_blog_post_path(:id => post.id), :class =>'btn-xs btn-primary' %>
+  <%= link_to 'Destroy', blog_post_path(:id => post.id), :class =>'btn-xs btn-primary', method: :delete, data: { confirm: 'Are you sure?' } %>
 <hr>
 <% end %>
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
