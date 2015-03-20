@@ -3,3 +3,4 @@
 
 body { padding-top: 70px; }
 footer { margin: 50px 0; }
+.link-post{margin: 3px;}

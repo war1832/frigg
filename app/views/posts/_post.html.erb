@@ -10,7 +10,5 @@
   <hr>
   <%= truncate(post.body, :length => 500, :escape => false) %>
   <hr>
-  <%= link_to 'Read More', blog_post_path(:id =>post,
-                                          :blog_id => post.blog.name),
-                                          :class =>'btn-xs btn-primary' %>
+  <%= show_link post %>
 </div>

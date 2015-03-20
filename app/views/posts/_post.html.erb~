@@ -4,7 +4,7 @@
                                                      :blog_id => post.blog.name) %>
   </h2>
   <p>
-    <span class="glyphicon glyphicon-user"></span> Posted by: <%= link_to post.user.username.capitalize, post.user %>|
+    <span class="glyphicon glyphicon-user"></span> Posted by: <%= link_to post.user.username.capitalize, post.user %> |
     <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> 
   </p>
   <hr>
@@ -13,4 +13,5 @@
   <%= link_to 'Read More', blog_post_path(:id =>post,
                                           :blog_id => post.blog.name),
                                           :class =>'btn-xs btn-primary' %>
+  <%= show_link post %>
 </div>
