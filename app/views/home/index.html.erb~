@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Your idea needs a great website</h1>
-    <small>It's surprisingly easy to create a unique website, blog or online store</small>
+    <h1 class="text-center">Your idea needs a great website</h1>
+    <span class="label label-success center-block">It's surprisingly easy to create a unique website, blog or online store</span>
     <hr>
     <div class="well">
       <h2>Easy Blogging</h2>
@@ -19,7 +19,7 @@
       <p>Weebly's free blog templates can work as stand alone sites or pieces of a larger website. Free blog hosting ensures your content loads quickly and remains available to readers. Blog templates can be fully customized and altered to fit your goals. Weebly blog design is only limited by your imagination</p>
       <hr>
       <h4>Media, Widgets, Success!</h4>
-      <p></p>
+      <p>Is your blog a photo journal, video diary, literary review, or maybe all three? With a plethora of widgets and media options available in your blog dashboard you can make it all work with ease.</p>
       <hr>
     </div>
   </div>
