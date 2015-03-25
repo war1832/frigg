@@ -1,7 +1,6 @@
 <div class="well">
   <h2>
-    <%= link_to sanitize(post.title), blog_post_path(:id =>post.id,
-                                                     :blog_id => post.blog.name) %>
+    <%= link_to sanitize(post.title), post %>
   </h2>
   <p>
     <span class="glyphicon glyphicon-user"></span> Posted by: <%= link_to post.user.username.capitalize, post.user %> |
@@ -10,8 +9,5 @@
   <hr>
   <%= truncate(post.body, :length => 500, :escape => false) %>
   <hr>
-  <%= link_to 'Read More', blog_post_path(:id =>post,
-                                          :blog_id => post.blog.name),
-                                          :class =>'btn-xs btn-primary' %>
   <%= show_link post %>
 </div>
