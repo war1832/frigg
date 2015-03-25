@@ -1,28 +1,4 @@
 <h1>New Post</h1>
-
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, :class => "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.cktext_area :body, rows: 10 %>
-  </div>
-  <hr>
-  <div class="actions">
-    <%= f.submit "Create Post" , :class => "btn btn-primary" %>
-  </div>
+<%= form_for @post, url: blog_posts_path do |f| %>
+  <%= render 'form' %>
 <% end %>

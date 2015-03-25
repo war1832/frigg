@@ -14,6 +14,6 @@ class Blog < ActiveRecord::Base
   end
   
   def self.find(input)
-    input.to_i == 0 ? find_by_name(input) : super
+    find_by_name(input)
   end
 end

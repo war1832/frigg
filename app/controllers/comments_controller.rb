@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
+  before_action :set_blog, only: [:create]
+  before_action :set_post, only: [:create]
+  
   def create
-    @post = Post.find(params[:post_id])
     comment = @post.comments.build comment_params
     comment.user = current_user
     respond_to do |format| 
       if comment.save
-       format.html { redirect_to blog_post_path(blog_id: @post.blog.name,
-                                                id: @post.id  ) }
+       format.html { redirect_to blog_post_path(@blog, @post) }
        format.json { render :show, status: :created, location: @post }
       else
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -17,5 +18,12 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params[:comment].permit(:body)
+  end
+  def set_blog
+    @blog = Blog.find(params[:blog_id])
+    render '/blogs/blog_not_found' unless @blog
+  end
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 end
