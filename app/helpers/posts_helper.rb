@@ -13,4 +13,25 @@ module PostsHelper
   def post_path post
     url_for [post.blog, post]
   end
+  
+  def show_rating
+   content_tag(:div,'' , :id => "star") if current_user
+  end
+  
+  def show_user_rating
+    if current_user
+      content_tag :div do
+        concat content_tag(:p, "Your rating")
+        concat content_tag(:div,'' , :id => "user_star") 
+      end
+    end
+  end
+  
+  def render_ratings_js
+    if current_user
+      content_tag :script do
+        concat render template: 'ratings/update.js.erb'
+      end
+    end
+  end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :comments, :only => [:create]
     end
   end
-
+  resources :ratings, only: :update
   devise_for :users
   resources :users, only: [:index, :show]
   

@@ -7,8 +7,12 @@
 <p>
   <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words @post.updated_at %>
 </p>
+<%= show_rating %>
 <hr>
 <%= sanitize(@post.body) %>
 <hr>
+<%= show_user_rating %>
+<hr>
 <%= render :partial => 'comments/new' %>
 <%= render :partial => @post.comments %>
+<%= render_ratings_js %>

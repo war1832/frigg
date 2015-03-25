@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :blogs
+  has_many :ratings
   attr_accessor :login
 
   include Gravtastic

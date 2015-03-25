@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    get_rank if current_user
   end
 
   # GET /posts/new
@@ -82,5 +83,12 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+    
+    def get_rank
+      @rating = Rating.where(post_id: @post.id, user_id: current_user.id).first 
+      unless @rating 
+        @rating = Rating.create(post_id: @post.id, user_id: current_user.id, score: 0)
+      end
     end
 end
