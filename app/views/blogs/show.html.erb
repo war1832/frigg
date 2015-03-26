@@ -2,5 +2,6 @@
   <%= @blog.title.capitalize %>
   <small><%= @blog.second_title.capitalize %></small>
 </h1>
-<%= render(@blog.posts) %>
+<%= render(@posts) %>
 <br>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
