@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325182031) do
+ActiveRecord::Schema.define(version: 20150326124205) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20150325182031) do
     t.datetime "date_of_birth"
     t.boolean  "is_female",              default: false
     t.boolean  "show_mail",              default: false
+    t.text     "bio"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

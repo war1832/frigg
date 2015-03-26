@@ -3,12 +3,48 @@
         <h1><%= @user.username.capitalize %></h1>
         <%= image_tag avatar_url(@user, 165), :class => "img-responsive" %>
         <hr>
-        <ul>
-            <%= content_tag(:li, ("Age: " + distance_of_time_in_words(Time.now, @user.date_of_birth) + " old")) unless @user.date_of_birth.blank? %>
-        </ul>
+        <button type="button" class="btn btn-success center-block">
+          Follow
+        </button>
+        <hr>
+        <h4>Statistics</h4>
+        <%= content_tag(:li, ("Comments: " + @user.comment_count )) %>
+        <%= content_tag(:li, ("Posts: " + @user.post_count )) %>
     </div>
     <div class="col-sm-8 col-md-9">
-        <h3>Social Feed Coming</h3>
-        <p>Put a couple of lines of text here and see how it scrolls</p>
+        <h3>Profile</h3>
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td><strong>Username</strong></td>
+                <td><%= @user.username %></td>
+              </tr>
+              <tr>
+                <td><strong>Email</strong></td>
+                <td><%= @user.email if @user.show_mail %></td>
+              </tr>
+              <tr>
+                <td><strong>First name</strong></td>
+                <td><%= @user.first_name %></td>
+              </tr>
+              <tr>
+                <td><strong>Last name</strong></td>
+                <td><%= @user.last_name %></td>
+              </tr>
+              <tr>
+                <td><strong>Date of Birth</strong></td>
+                <td><%= @user.date_of_birth.strftime('%m/%d/%Y') %></td>
+              </tr>
+              <tr>
+                <td><strong>Gender</strong></td>
+                <td><%= @user.is_female ? "Female" : "Male" %></td>
+              </tr>
+            </tbody>
+          </table>
+       <hr>
+        <h4>Bio</h4>       
+        <blockquote>
+        <small><%= @user.bio %></small>
+      </blockquote>
     </div>
 </div>

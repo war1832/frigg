@@ -34,4 +34,12 @@ class User < ActiveRecord::Base
     input.to_i == 0 ? find_by_username(input) : super
   end
   
+  def post_count
+   Post.count(:id => id).to_s
+  end
+  
+  def comment_count
+   Comment.count(:id => id).to_s
+  end
+  
 end

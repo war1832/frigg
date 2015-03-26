@@ -30,6 +30,12 @@
          <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
        </div>
   </div>
+  <div class="form-group">
+     <%= f.label :bio, class: 'col-sm-2 control-label' %>
+     <div class="col-sm-6">
+       <%= f.text_area :bio, autofocus: true, class: "form-control" %>
+     </div>
+  </div>
   
   <div class="form-group">
     <%= f.label :is_female, "Gender", class: 'col-sm-2 control-label'  %>
