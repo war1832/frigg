@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
 
+  acts_as_followable
+  acts_as_follower
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable,

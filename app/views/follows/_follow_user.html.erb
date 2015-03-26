@@ -1,0 +1,7 @@
+<% if current_user.following?(user) %>
+    <%= button_to("Un-Follow #{user.username.capitalize}", user_follow_path(user.to_param, current_user.get_follow(user).id), :method => :delete,
+    :class =>"btn btn-danger center-block", :remote => true) %>
+<% else %>
+    <%= button_to("Follow #{user.username.capitalize}", user_follows_path(user.to_param),
+                  :class =>"btn btn-success center-block", :remote => true) %>
+<% end %>

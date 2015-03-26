@@ -3,9 +3,11 @@
         <h1><%= @user.username.capitalize %></h1>
         <%= image_tag avatar_url(@user, 165), :class => "img-responsive" %>
         <hr>
-        <button type="button" class="btn btn-success center-block">
-          Follow
-        </button>
+        <% if user_signed_in? && current_user != @user %>
+           <div id="follow_user">
+             <%= render :partial => "follows/follow_user", :locals => {:user => @user} %>
+           </div>
+        <% end %>
         <hr>
         <h4>Statistics</h4>
         <%= content_tag(:li, ("Comments: " + @user.comment_count )) %>
@@ -33,7 +35,7 @@
               </tr>
               <tr>
                 <td><strong>Date of Birth</strong></td>
-                <td><%= @user.date_of_birth.strftime('%m/%d/%Y') %></td>
+                <td><%= @user.date_of_birth.strftime('%m/%d/%Y') if @user.date_of_birth %></td>
               </tr>
               <tr>
                 <td><strong>Gender</strong></td>

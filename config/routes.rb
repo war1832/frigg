@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   end
   resources :ratings, only: :update
   devise_for :users
-  resources :users, only: [:index, :show]
-  
+
+  resources :users do
+    resources :users, only: [:index, :show]
+    resources :follows, :only => [:create, :destroy]
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
   
   get 'home/index'
