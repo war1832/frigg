@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
   end
   
   def post_count
-   Post.count(:id => id).to_s
+   Post.where(:user_id => id).count.to_s
   end
   
   def comment_count
-   Comment.count(:id => id).to_s
+   Comment.where(:user_id => id).count.to_s
   end
   
 end

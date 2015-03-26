@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>The user <%= @user.username %> created a new post. </h2>
+    <p>
+      <%= link_to "Click here to view", url_for([@post.blog, @post]) %>
+    </p>
+  </body>
+</html>
