@@ -36,7 +36,6 @@ class PostsController < ApplicationController
     @post.blog = current_user.blogs.find_by_name(params[:blog_id])
     respond_to do |format|
       if @post.save
-        current_user.send_user_notifier @post
         format.html { redirect_to :action => "show", :id => @post.id }
         format.json { render :show, status: :created, location: @post }
       else
