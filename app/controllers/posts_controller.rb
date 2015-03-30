@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_blog, only: [:new, :index, :show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:new, :index, :show, :edit, :update, :create,:destroy]
   before_action :authenticate_user!, except: [:show]
   
   rescue_from ActiveRecord::RecordNotFound do |exception|
@@ -31,9 +31,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = @blog.posts.build post_params
     @post.user = current_user
-    @post.blog = current_user.blogs.find_by_name(params[:blog_id])
     respond_to do |format|
       if @post.save
         format.html { redirect_to :action => "show", :id => @post.id }
