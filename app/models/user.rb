@@ -37,8 +37,12 @@ class User < ActiveRecord::Base
     end
   end
   
+  def to_param
+    username
+  end
+  
   def self.find(input)
-    input.to_i == 0 ? find_by_username(input) : super
+    find_by_username(input)
   end
   
   def post_count
