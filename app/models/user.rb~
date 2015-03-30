@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
     :case_sensitive => false
   }
 
+  def send_user_notifier post
+    UserNotifier.new_post(post).deliver_later
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -44,5 +48,4 @@ class User < ActiveRecord::Base
   def comment_count
    Comment.where(:user_id => id).count.to_s
   end
-  
 end
