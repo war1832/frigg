@@ -31,6 +31,7 @@ gem 'paperclip'
 gem 'will_paginate-bootstrap'
 gem 'gravtastic'
 gem 'acts_as_follower'
+gem "recaptcha"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

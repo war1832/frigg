@@ -1,9 +1,17 @@
-<div class="well">
+<div class="well">  
 <h4>Leave a Comment:</h4>
- <%= form_for [@blog,@post, Comment.new] do |f| %>
+  <% if flash[:error] %>
+    <div class="alert alert-warning">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+ <%= form_for [@blog, @post, Comment.new] do |f| %>
     <div class="form-group">
      <%= f.text_area :body, :class => "form-control", :rows => "10" %>
     </div>
+    <%= recaptcha_tags %>
+    <hr>
     <%= f.submit "Submit", :class => "btn btn-primary" %>
 <% end %>
 </div>

@@ -1,6 +1,6 @@
 <div class="media">
   <a class="pull-left" href="#">
-     <%= image_tag comment_avatar_url comment.user %>
+     <%= image_tag comment_avatar_url comment.user%>
   </a>
   <div class="media-body">
     <h4 class="media-heading">
