@@ -1,0 +1,23 @@
+<% if @blogs.present? %>
+  <h1>Search Results</h1>
+  <p><strong><%= @blogs.count.to_s %></strong> results were found for the search for <strong><%= params[:search] %></strong>.</p>
+  <hr>
+<table class="table table-striped">
+  <thead>
+        <tr>
+          <th>Title</th>
+          <th>Second Title</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.second_title %></td>
+        <td><%= link_to 'Show', blog %></td>
+      </tr>
+    <% end %>
+</table>
+<% else %>
+  <p>There are no blogs containing the term(s) <%= params[:search] %>.</p>
+<% end %>

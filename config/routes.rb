@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       resources :comments, :only => [:create]
     end
   end
+  
+  match 'search' => 'blogs#search', :via => :get
+
   resources :ratings, only: :update
   devise_for :users
 
@@ -12,7 +15,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     resources :follows, :only => [:create, :destroy]
   end
-
   mount Ckeditor::Engine => '/ckeditor'
   
   get 'home/index'

@@ -16,4 +16,9 @@ class Blog < ActiveRecord::Base
   def self.find(input)
     find_by_name(input)
   end
+  
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%") 
+    where("title LIKE ?", "%#{search}%")
+  end
 end

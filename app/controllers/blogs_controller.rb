@@ -63,6 +63,10 @@ class BlogsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def search
+    @blogs = Blog.search(params[:search]).order("created_at DESC") if params[:search]
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

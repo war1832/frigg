@@ -66,9 +66,10 @@
             <div class="col-md-4">
                 <!-- Blog Search Well -->
                 <div class="well">
+                <%= form_tag search_path, :method => 'get' do %>
                     <h4>Blog Search</h4>
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <%= text_field_tag :search, params[:search], :class => "form-control" %>
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -76,6 +77,7 @@
                         </span>
                     </div>
                     <!-- /.input-group -->
+                <% end %>
                 </div>
 
                 <div class="well">
