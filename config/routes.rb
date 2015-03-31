@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   match 'search' => 'blogs#search', :via => :get
 
   resources :ratings, only: :update
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users do
     resources :users, only: [:index, :show]
