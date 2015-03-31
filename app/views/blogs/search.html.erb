@@ -1,5 +1,5 @@
+<h1>Search Results</h1>
 <% if @blogs.present? %>
-  <h1>Search Results</h1>
   <p><strong><%= @blogs.count.to_s %></strong> results were found for the search for <strong><%= params[:search] %></strong>.</p>
   <hr>
 <table class="table table-striped">
@@ -19,5 +19,5 @@
     <% end %>
 </table>
 <% else %>
-  <p>There are no blogs containing the term(s) <%= params[:search] %>.</p>
+  <p>There are no blogs containing the term(s) <strong><%= params[:search] %></strong>.</p>
 <% end %>
