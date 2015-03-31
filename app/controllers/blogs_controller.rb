@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :search]
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render 'blog_not_found'
   end
