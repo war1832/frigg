@@ -19,6 +19,6 @@ class Blog < ActiveRecord::Base
   
   def self.search(search)
     where("title LIKE ?", "%#{search}%") 
-    where("title LIKE ?", "%#{search}%")
+    where("second_title LIKE ?", "%#{search}%")
   end
 end
