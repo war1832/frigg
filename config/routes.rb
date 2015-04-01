@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   match 'search' => 'blogs#search', :via => :get
 
   resources :ratings, only: :update
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
 
   resources :users do
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show, :edit]
     resources :follows, :only => [:create, :destroy]
   end
   mount Ckeditor::Engine => '/ckeditor'
