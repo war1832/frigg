@@ -1,24 +1,30 @@
 <h1>Listing Blogs</h1>
-<table class="table table-striped">
-  <thead>
+<hr>
+<% unless @blogs.empty? %>
+  <table class="table table-striped">
+    <thead>
+          <tr>
+            <th>Url Name</th>
+            <th>Title</th>
+            <th>Second Title</th>
+            <th class="text-center" colspan="4">Actions</th>
+          </tr>
+        </thead>
+      <% @blogs.each do |blog| %>
         <tr>
-          <th>Url Name</th>
-          <th>Title</th>
-          <th>Second Title</th>
-          <th class="text-center" colspan="4">Actions</th>
+          <td><%= blog.name %></td>
+          <td><%= blog.title %></td>
+          <td><%= blog.second_title %></td>
+          <td><%= link_to 'Show', blog %></td>
+          <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+          <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Add Post', new_blog_post_path(blog) %></td>
         </tr>
-      </thead>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.name %></td>
-        <td><%= blog.title %></td>
-        <td><%= blog.second_title %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Add Post', new_blog_post_path(blog) %></td>
-      </tr>
-    <% end %>
-</table>
-
+      <% end %>
+  </table>
+<% else %>
+  <p>
+    Click <%= link_to 'Here', new_blog_path %> for add New Blog
+  </p>
+<% end %>
 <br>
