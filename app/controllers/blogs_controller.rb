@@ -31,7 +31,7 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.create blog_params
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog }
+        format.html { redirect_to new_blog_post_path(@blog) }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
