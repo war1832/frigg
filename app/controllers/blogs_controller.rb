@@ -14,6 +14,10 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @posts = @blog.posts.order(created_at: :DESC).paginate(page: params[:page], per_page: 5)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /blogs/new

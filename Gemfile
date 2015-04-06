@@ -27,7 +27,7 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem "ckeditor"
 gem 'paperclip'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate'
 gem 'gravtastic'
 gem 'acts_as_follower'
 gem "recaptcha"

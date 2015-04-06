@@ -11,6 +11,10 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = @blog.posts.order(created_at: :DESC).paginate(page: params[:page], per_page: 5)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /posts/1

@@ -1,9 +1,11 @@
 <h1>Listing Posts</h1>
-<% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <p><span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> </p>
-  <%= HTML_Truncator.truncate(post.body, 200, :length_in_chars => true).html_safe %>
-  <%= show_link post %>
-<hr>
-<% end %>
-<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+<div id="posts">
+  <% @posts.each do |post| %>
+    <h2><%= post.title %></h2>
+    <p><span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> </p>
+    <%= HTML_Truncator.truncate(post.body, 200, :length_in_chars => true).html_safe %>
+    <%= show_link post %>
+  <hr>
+  <% end %>
+</div>
+<%= will_paginate @posts %>

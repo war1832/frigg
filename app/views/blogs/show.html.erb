@@ -3,6 +3,8 @@
   <small><%= @blog.second_title.capitalize %></small>
 </h1>
 <%= add_post_link @blog, @posts %>
-<%= render(@posts) %>
+<div id="posts">
+  <%= render(@posts) %>
+</div>
 <br>
-<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @posts %>
