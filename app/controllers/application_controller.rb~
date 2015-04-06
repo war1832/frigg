@@ -21,12 +21,16 @@ class ApplicationController < ActionController::Base
     render "shared/not_found"
   end
 
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
     
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
     
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :is_female, :date_of_birth, :first_name, :last_name, :show_mail, :bio  ) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :is_female, :date_of_birth, :first_name, :last_name, :show_mail, :bio, :current_password, :password, :password_confirmation  ) }
   end
 end
