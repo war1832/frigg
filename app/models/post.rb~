@@ -8,10 +8,15 @@ class Post < ActiveRecord::Base
   validates :title, :body, presence: true
   
   def average_rating
-    ratings.sum(:score) / ratings.size
+    unless ratings.empty?
+      ratings.sum(:score) / ratings.size
+    else
+      0
+    end
   end
 
   private 
+
   def send_mail_to_followers
     self.user.send_user_notifier self
   end

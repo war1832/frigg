@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validates :title, :body, presence: true
   
   def average_rating
-    ratings.sum(:score) / ratings.size
+    ratings.empty? ? 0 : ratings.sum(:score) / ratings.size
   end
 
   private 
