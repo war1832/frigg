@@ -84,6 +84,8 @@ GEM
     gravtastic (3.2.6)
     hashie (3.4.1)
     hike (1.2.3)
+    html_truncator (0.4.1)
+      nokogiri (~> 1.5)
     httpauth (0.2.1)
     i18n (0.7.0)
     jbuilder (2.2.11)
@@ -237,6 +239,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   gravtastic
+  html_truncator (~> 0.2)
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook

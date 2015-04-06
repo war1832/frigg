@@ -7,7 +7,7 @@
     <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> 
   </p>
   <hr>
-  <%= truncate(post.body, :length => 500, :escape => false) %>
+  <%= HTML_Truncator.truncate(post.body, 200, :length_in_chars => true).html_safe %>
   <hr>
   <%= show_link post %>
 </div>

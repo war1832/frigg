@@ -2,7 +2,7 @@
 <% @posts.each do |post| %>
   <h2><%= post.title %></h2>
   <p><span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> </p>
-  <%= truncate(post.body, :length => 200, :escape => false) %>
+  <%= HTML_Truncator.truncate(post.body, 200, :length_in_chars => true).html_safe %>
   <%= show_link post %>
 <hr>
 <% end %>
