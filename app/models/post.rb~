@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :ratings
   belongs_to :user
   belongs_to :blog
@@ -8,11 +8,7 @@ class Post < ActiveRecord::Base
   validates :title, :body, presence: true
   
   def average_rating
-    unless ratings.empty?
-      ratings.sum(:score) / ratings.size
-    else
-      0
-    end
+    ratings.empty? ? 0 : ratings.sum(:score) / ratings.size
   end
 
   private 

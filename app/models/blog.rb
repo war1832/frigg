@@ -1,7 +1,7 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
-  has_many :posts
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   before_save do
     self.name.downcase!
@@ -18,7 +18,8 @@ class Blog < ActiveRecord::Base
   end
   
   def self.search(search)
-    where("title LIKE ?", "%#{search}%") 
-    where("second_title LIKE ?", "%#{search}%")
+    param =  search.downcase
+    where("lower(title) LIKE ? OR lower(second_title) LIKE ? OR lower(name) LIKE ? ", 
+                             "%#{ param }%","%#{ param }%", "%#{ param }%") 
   end
 end
