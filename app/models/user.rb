@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :blogs, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :editors, dependent: :destroy
   attr_accessor :login
 
   include Gravtastic
