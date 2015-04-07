@@ -1,0 +1,16 @@
+<h1>Editors: <%=@blog.name %></h1> 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th colspan="2" class="text-center">Action</th>
+    </tr>
+  </thead>
+    <% @editors.each do |editor| %>
+      <tr>
+        <td><%= editor.user.username %></td>
+        <td><%= link_to 'Edit', edit_blog_editor_path(@blog, editor) %></td>
+        <td><%= link_to 'Destroy', blog_editor_path(@blog, editor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+</table>

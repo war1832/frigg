@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :editors
+
   resources :blogs, :path => "b" do
     resources :posts do
       resources :comments, :only => [:create]
     end
+    resources :editors
   end
   
   match 'search' => 'blogs#search', :via => :get

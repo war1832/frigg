@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_blog, only: [:new, :index, :show, :edit, :update, :create, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
   before_action :check_permission, except: [:show]
   
@@ -80,7 +80,7 @@ class PostsController < ApplicationController
     end
     
     def check_permission
-      unless current_user.admin? || @blog.user == current_user
+      unless current_user.admin? || @blog.user == current_user || ( current_user && @blog.editors.where( user: current_user ))
         head :unauthorized
       end
     end
