@@ -1,6 +1,6 @@
 class EditorsController < ApplicationController
-  before_action :set_blog, only: [:new, :index, :show, :edit, :update, :create, :destroy]
-  before_action :set_editor, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:new, :index, :create, :destroy]
+  before_action :set_editor, only: [:destroy]
   before_action :authenticate_user!, except: [:show]
   before_action :check_permission, except: [:show]
 
@@ -8,37 +8,20 @@ class EditorsController < ApplicationController
     @editors = Editor.where(blog: @blog)
   end
 
-  def show
-  end
-
   def new
     @editor = Editor.new
   end
 
-  def edit
-  end
-
   def create
-    @editor = Editor.new(editor_params)
-
+    @editor = @blog.editors.build
+    user = User.find_by_email params[:user_email]
+    @editor.user = user
     respond_to do |format|
       if @editor.save
         format.html { redirect_to @editor, notice: 'Editor was successfully created.' }
         format.json { render :show, status: :created, location: @editor }
       else
         format.html { render :new }
-        format.json { render json: @editor.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @editor.update(editor_params)
-        format.html { redirect_to @editor, notice: 'Editor was successfully updated.' }
-        format.json { render :show, status: :ok, location: @editor }
-      else
-        format.html { render :edit }
         format.json { render json: @editor.errors, status: :unprocessable_entity }
       end
     end
