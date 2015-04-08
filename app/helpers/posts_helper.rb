@@ -2,7 +2,7 @@ module PostsHelper
   def show_link post
     content_tag :div do
         concat link_to 'Read More', post, :class =>'btn-xs btn-primary link-post'
-      if current_user.can_manager? @blog
+      if user_signed_in? && current_user.can_manager?(@blog)
         concat link_to 'Edit', edit_blog_post_path(@blog, post), :class =>'btn-xs btn-primary link-post'
         concat link_to 'Destroy', blog_post_path(@blog, post), :class =>'btn-xs btn-primary link-post',
                            method: :delete, data: { confirm: 'Are you sure?' }

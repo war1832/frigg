@@ -15,22 +15,26 @@ class EditorsController < ApplicationController
   def create
     @editor = @blog.editors.build
     user = User.find_by_email params[:user_email]
-    @editor.user = user
     respond_to do |format|
-      if @editor.save
-        format.html { redirect_to @editor, notice: 'Editor was successfully created.' }
-        format.json { render :show, status: :created, location: @editor }
+      if user 
+        @editor.user = user
+          if @editor.save
+            format.html { redirect_to blog_editors_path }
+            format.json { render :show, status: :created, location: @editor }
+          else
+            format.html { render :new }
+            format.json { render json: @editor.errors, status: :unprocessable_entity }
+          end
       else
-        format.html { render :new }
-        format.json { render json: @editor.errors, status: :unprocessable_entity }
+         format.html { redirect_to new_blog_editor_path , alert: 'Invalid Email.' }
       end
-    end
+   end
   end
 
   def destroy
     @editor.destroy
     respond_to do |format|
-      format.html { redirect_to editors_url, notice: 'Editor was successfully destroyed.' }
+      format.html { redirect_to blog_editors_path }
       format.json { head :no_content }
     end
   end

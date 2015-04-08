@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
   
   def can_manager? blog
-    admin? || blog.user == self || ( self && blog.editors.where( user: self ))
+    admin? || blog.user == self || ( self && blog.editors.where( user: self ).any?)
   end
   
   def facebook_user?

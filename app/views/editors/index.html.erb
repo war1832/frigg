@@ -1,4 +1,6 @@
 <h1>Editors: <%=@blog.name %></h1> 
+<hr>
+<% unless @editors.empty? %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,3 +15,8 @@
       </tr>
     <% end %>
 </table>
+<% else %>
+  <p>
+    Click <%= link_to 'Here', new_blog_editor_path %> for add New Editor
+  </p>
+<% end %>

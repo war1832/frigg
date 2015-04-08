@@ -23,4 +23,8 @@ class Blog < ActiveRecord::Base
     where("lower(title) LIKE ? OR lower(second_title) LIKE ? OR lower(name) LIKE ? ", 
                              "%#{ param }%","%#{ param }%", "%#{ param }%") 
   end
+  
+  def exists?
+    Blog.where(id: id).any?
+  end
 end

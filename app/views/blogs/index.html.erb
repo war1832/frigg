@@ -7,7 +7,8 @@
             <th>Url Name</th>
             <th>Title</th>
             <th>Second Title</th>
-            <th class="text-center" colspan="4">Actions</th>
+            <th class="text-center" colspan="3">Blog</th>
+            <th class="text-center" colspan="2">Actions</th>
           </tr>
         </thead>
       <% @blogs.each do |blog| %>
@@ -19,6 +20,8 @@
           <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
           <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td><%= link_to 'Add Post', new_blog_post_path(blog) %></td>
+          <td><%= link_to 'Show Editors', blog_editors_path(blog) %></td>
+          <td><%= link_to 'Add Editor', new_blog_editor_path(blog) %></td>
         </tr>
       <% end %>
   </table>

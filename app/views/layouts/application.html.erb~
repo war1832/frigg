@@ -107,13 +107,37 @@
                   <%= render :file => '/devise/sessions/new' %>
                 <% end %>
                 </div>
-
-                <!-- Side Widget Well -->
+                <% if user_signed_in? && @blog && @blog.exists? && current_user.can_manager?(@blog) %>
                 <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                </div>
-                
+                    <h4><%= @blog.name.capitalize %></h4>
+                     <ul>
+                         <li>
+                          <span class="glyphicon glyphicon-home"></span>
+                          <%= link_to 'Blog Index', @blog %>
+                        </li>
+                        <li>
+                          <span class="glyphicon glyphicon-pencil"></span>
+                          <%= link_to 'Edit Blog', edit_blog_path(@blog) %>
+                        </li>
+                        <li>
+                          <span class="glyphicon glyphicon-trash"></span>
+                        <%= link_to 'Destroy Blog', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+                        </li>
+                        <li>
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <%= link_to 'Add New Post', new_blog_post_path(@blog) %>
+                        </li>
+                        <li>
+                        <span class="glyphicon glyphicon-cog"></span>
+                        <%= link_to 'Manager Editors', blog_editors_path(@blog) %>
+                        </li>
+                        <li>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <%= link_to 'Add New Editor', new_blog_editor_path(@blog) %>
+                        </li>
+                    </ul>
+                 </div>
+               <% end %>
             </div>
 
         </div>

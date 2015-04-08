@@ -1,4 +1,10 @@
 <%= form_for [@blog, @editor] do |f| %>
+  <% if flash[:alert] %>
+  <div class="alert alert-warning alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <p><%= flash[:alert] %></p>
+    </div>
+  <% end %>
   <% if @editor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@editor.errors.count, "error") %> prohibited this editor from being saved:</h2>
@@ -13,7 +19,7 @@
   <div class="form-group">
     <%= f.label :email, class: 'col-sm-2 control-label' %>
     <div class="col-sm-6">
-      <%= text_field_tag 'user_email', nil, class: 'form-control' %>
+      <%= email_field_tag 'user_email', nil, class: 'form-control' %>
       <%= f.hidden_field :blog_id, :value => @blog.id%>
     </div>
   </div>
