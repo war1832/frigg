@@ -1,12 +1,20 @@
 <div class="users row">
   <% @users.each do |user| %>
-    <div class="panel panel-default">
-      <%= link_to user_path(user) do %>
-      <div class="panel-body">
-        <%= image_tag user.gravatar_url(:rating => 'R', :secure => true) %>
-        <p><%= user.username.capitalize %></p>
+    <div class="col-sm-3">
+      <div class="row">
+          <div class="col-sm-12">
+            <%= image_tag avatar_url(user, 150), class: 'img-circle img-responsive center-block' %>
+            <hr>
+            <p class="text-center text-danger"><strong>User:</strong> <%= user.username.capitalize %></p>
+          </div>
       </div>
-      <% end %>
+      <div clas="row">
+        <div class="col-sm-12">
+        <p class="text-center">
+          <%= link_to 'Profile', user_path(user), class: 'btn btn-info' %>
+        </p>
+        </div>
+     </div>   
     </div>
   <% end %>
 </div>
