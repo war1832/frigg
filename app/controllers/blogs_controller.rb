@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :search]
-  before_action :check_permission, except: [:show, :index]
+  before_action :check_permission, except: [:show, :index, :search]
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render 'blog_not_found'
   end
@@ -74,7 +74,7 @@ class BlogsController < ApplicationController
     end
 
     def check_permission
-      unless current_user.admin? || @blog.user == current_user
+      unless current_user.can_manager? @blog
         head :unauthorized
       end
     end

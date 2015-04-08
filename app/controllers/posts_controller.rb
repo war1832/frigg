@@ -80,7 +80,7 @@ class PostsController < ApplicationController
     end
     
     def check_permission
-      unless current_user.admin? || @blog.user == current_user || ( current_user && @blog.editors.where( user: current_user ))
+      unless current_user.can_manager? @blog
         head :unauthorized
       end
     end

@@ -2,16 +2,16 @@ module PostsHelper
   def show_link post
     content_tag :div do
         concat link_to 'Read More', post, :class =>'btn-xs btn-primary link-post'
-      if current_user == post.user || current_user.try(:admin?) || ( current_user && @blog.editors.where( user: current_user ))
-        concat link_to 'Edit', edit_blog_post_path(post.blog, post), :class =>'btn-xs btn-primary link-post'
-        concat link_to 'Destroy', blog_post_path(post.blog, post), :class =>'btn-xs btn-primary link-post',
+      if current_user.can_manager? @blog
+        concat link_to 'Edit', edit_blog_post_path(@blog, post), :class =>'btn-xs btn-primary link-post'
+        concat link_to 'Destroy', blog_post_path(@blog, post), :class =>'btn-xs btn-primary link-post',
                            method: :delete, data: { confirm: 'Are you sure?' }
       end
     end
   end
   
   def post_path post
-    url_for [post.blog, post]
+    url_for [@blog, post]
   end
   
   def show_rating

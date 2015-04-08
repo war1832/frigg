@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def can_manager? blog
+    admin? || blog.user == self || ( self && blog.editors.where( user: self ))
+  end
+  
   def facebook_user?
     self.provider == "facebook"
   end
@@ -71,10 +75,10 @@ class User < ActiveRecord::Base
   end
   
   def post_count
-   Post.where(:user_id => id).count.to_s
+   Post.where(user: self).count.to_s
   end
   
   def comment_count
-   Comment.where(:user_id => id).count.to_s
+   Comment.where(user_id: self).count.to_s
   end
 end
