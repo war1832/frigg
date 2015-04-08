@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def full_name
+    [first_name, last_name].reject(&:empty?).join(' ')
+  end
+  
   def can_manager? blog
     admin? || blog.user == self || ( self && blog.editors.where( user: self ).any?)
   end

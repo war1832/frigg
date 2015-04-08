@@ -45,6 +45,49 @@
                         <a href="#">Contact</a>
                     </li>
                 </ul>
+                <% if user_signed_in? %>
+                <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong><%= current_user.username.capitalize %></strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center">
+                                            <%= image_tag avatar_url(current_user, 90) %>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-left"><strong>Apellido</strong></p>
+                                        <p class="text-left small"><%= current_user.email %></p>
+                                        <p class="text-left">
+                                         <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-primary btn-block btn-sm' %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="navbar-login navbar-login-session">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>
+                                        <%= link_to "Logout", destroy_user_session_path, :method => 'delete', class: 'btn btn-danger btn-block' %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <% end %>
+                </li>
+            </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -109,7 +152,7 @@
                 </div>
                 <% if user_signed_in? && @blog && @blog.exists? && current_user.can_manager?(@blog) %>
                 <div class="well">
-                    <h4><%= @blog.name.capitalize %></h4>
+                    <h4>Blog: <%= @blog.name.capitalize %></h4>
                      <ul>
                          <li>
                           <span class="glyphicon glyphicon-home"></span>
