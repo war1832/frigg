@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'contact/new'
+
+  post 'contact/create'
+
   resources :blogs, :path => "b" do
     resources :posts do
       resources :comments, :only => [:create]

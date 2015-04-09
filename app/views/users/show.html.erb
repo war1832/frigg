@@ -7,11 +7,13 @@
            <div id="follow_user">
              <%= render :partial => "follows/follow_user", :locals => {:user => @user} %>
            </div>
+           <hr>
         <% end %>
-        <hr>
         <h4>Statistics</h4>
-        <%= content_tag(:li, ("Comments: " + @user.comment_count )) %>
-        <%= content_tag(:li, ("Posts: " + @user.post_count )) %>
+        <ul>
+          <li>Comments: <%= @user.comment_count %></li>
+          <li>Posts: <%= @user.post_count %></li>
+        </ul>
     </div>
     <div class="col-sm-8 col-md-9">
         <h3>Profile</h3>

@@ -1,0 +1,36 @@
+<h4>Send Message</h4>
+<% if flash[:error] %>
+  <div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<%= form_for @contact,  url: contact_create_path(@contact),
+             :html => { :class => 'form-horizontal' } do |f| %>
+   <div class="form-group">
+     <%= f.label :name, class: 'col-sm-2 control-label' %>
+     <div class="col-sm-6">
+        <%= f.text_field :name, autofocus: true, class: "form-control"  %>
+     </div>
+   </div>
+
+   <div class="form-group">
+     <%= f.label :email, class: 'col-sm-2 control-label' %>
+     <div class="col-sm-6">
+       <%= f.email_field :email, class: "form-control" %>
+     </div>
+   </div>
+   
+   <div class="form-group">
+     <%= f.text_area :message, :class => "form-control", :rows => "10" %>
+   </div>
+    <%= recaptcha_tags %>
+    <hr>
+    <%= f.submit "Submit", :class => "btn btn-primary" %>
+<% end %>

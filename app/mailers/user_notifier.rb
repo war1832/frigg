@@ -5,7 +5,7 @@ class UserNotifier < ApplicationMailer
     @post = post
     @user = post.user
     @user.user_followers.each do |follower|
-      mail(to: follower.email, subject: "New post - #{@user.username.capitalize}" )
+      mail(to: follower.email, subject: "New post - #{@user.name.capitalize}" )
     end
   end
 end
