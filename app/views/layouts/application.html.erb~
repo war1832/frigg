@@ -39,7 +39,10 @@
                        <%= link_to "Home", root_path %>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                      <%= link_to "Users",  %>
+                    </li>
+                    <li>
+                        <%= link_to "Services", home_services_path %>
                     </li>
                     <li>
                         <%= link_to "Contact", contact_new_path %>

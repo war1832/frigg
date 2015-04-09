@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   get 'home/index'
+  get 'home/services'
   root 'home#index'
   match '*unmatched_route', :to => 'application#not_found', :via => :all
 
