@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :blogs, dependent: :destroy
+  has_many :posts, through: :blogs
+  has_many :comments, through: :posts
   has_many :ratings, dependent: :destroy
   has_many :editors, dependent: :destroy
   attr_accessor :login
@@ -20,6 +22,8 @@ class User < ActiveRecord::Base
     :uniqueness => {
     :case_sensitive => false
   }
+  
+  scope :admins, -> { where(admin: true) }
   
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -79,10 +83,10 @@ class User < ActiveRecord::Base
   end
   
   def post_count
-   Post.where(user: self).count.to_s
+    posts.count
   end
   
   def comment_count
-   Comment.where(user_id: self).count.to_s
+   comments.count
   end
 end
