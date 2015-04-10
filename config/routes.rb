@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'contact/new'
-
-  post 'contact/create'
+  namespace :api, defaults: { format: 'json' } do
+    resources :blogs, :path => "b", :only => [:show]
+    resources :posts, :only => [:show]
+    resources :users, :only => [:index, :show]
+  end
 
   resources :blogs, :path => "b" do
     resources :posts do
@@ -11,20 +13,24 @@ Rails.application.routes.draw do
     resources :editors, only: [:index, :new, :create, :destroy]
   end
   
-  match 'search' => 'blogs#search', :via => :get
-
   resources :ratings, only: :update
-  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
-
+  
   resources :users do
     resources :users, only: [:index, :show, :edit]
     resources :follows, :only => [:create, :destroy]
   end
+  
+  devise_for :users, :controllers => { 
+            omniauth_callbacks: "users/omniauth_callbacks",
+            registrations: "users/registrations" }
+  
   mount Ckeditor::Engine => '/ckeditor'
   
+  root 'home#index'
+  get 'contact/new'
   get 'home/index'
   get 'home/services'
-  root 'home#index'
+  post 'contact/create'
   match '*unmatched_route', :to => 'application#not_found', :via => :all
-
+  match 'search' => 'blogs#search', :via => :get
 end
