@@ -25,6 +25,6 @@ class Blog < ActiveRecord::Base
   end
   
   def exists?
-    Blog.where(id: id).any?
+    Blog.exists?(id: id)
   end
 end
