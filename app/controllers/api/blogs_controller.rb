@@ -4,7 +4,7 @@ module Api
     before_action :set_blog, only: [:show]
     
     def show
-      respond_with @blog.posts.order(created_at: :DESC)
+      respond_with @blog
     end
     
     private
