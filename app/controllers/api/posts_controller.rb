@@ -1,6 +1,5 @@
 module Api
   class PostsController < ApplicationController
-    has_many :comments
     respond_to :json
     before_action :set_post, only: [:show]
 
