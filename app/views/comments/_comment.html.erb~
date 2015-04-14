@@ -3,10 +3,13 @@
      <%= image_tag comment_avatar_url comment.user%>
   </a>
   <div class="media-body">
+  <% if user_signed_in? && current_user.can_remove_comment?(comment) %>
+  <%= link_to 'Destroy', blog_post_comment_path(@blog, @post, comment), class: 'push-right', method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
     <h4 class="media-heading">
       <%= username comment.user %>
       <small><%= time_ago_in_words comment.updated_at %></small>
     </h4>
     <%= strip_tags comment.body %>
-    </div>
+  </div>
 </div>

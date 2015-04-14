@@ -63,11 +63,15 @@ class User < ActiveRecord::Base
   end
   
   def full_name
-    [first_name, last_name].reject(&:empty?).join(' ')
+    [first_name, last_name].join(' ')
   end
   
   def can_manager? blog
-    admin? || blog.user == self || ( self && blog.editors.where( user: self ).any?)
+    admin? || blog.user == self || ( self && blog.editors.exists?(user: self))
+  end
+  
+  def can_remove_comment? comment
+    can_manager?(comment.blog) || ( self && comment.user == self )
   end
   
   def facebook_user?
