@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
+
   def full_name
     [first_name, last_name].join(' ')
   end
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   end
   
   def can_remove_comment? comment
-    can_manager?(comment.blog) || ( self && comment.user == self )
+    can_manager?(comment.post.blog) || ( self && comment.user == self )
   end
   
   def facebook_user?
