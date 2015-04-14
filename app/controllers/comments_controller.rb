@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   
   def create
     comment = @post.comments.build comment_params
-    comment.blog = @blog
     comment.user = current_user
     respond_to do |format| 
       if verify_recaptcha 

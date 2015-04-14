@@ -8,15 +8,12 @@ class CommentsController < ApplicationController
   
   def create
     comment = @post.comments.build comment_params
-    comment.blog = @blog
     comment.user = current_user
     respond_to do |format| 
       if verify_recaptcha 
         if comment.save
          format.html { redirect_to blog_post_path(@blog, @post) }
-         format.json { render :show, status: :created, location: @post }
         else
-          format.json { render json: @post.errors, status: :unprocessable_entity }
           format.html { redirect_to( blog_post_path(@blog, @post),
                       :flash => { :error => 'Invalid comment.' } ) }
         end
