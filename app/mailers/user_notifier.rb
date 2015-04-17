@@ -2,7 +2,6 @@ class UserNotifier < ApplicationMailer
   default :from => 'notifications@example.com'
 
   def new_post(post)
-    binding.pry
     @post = post
     @user = post.user
     @user.user_followers.each do |follower|
