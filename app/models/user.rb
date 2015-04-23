@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
     :uniqueness => {
     :case_sensitive => false
   }
-  
+
   scope :admins, -> { where(admin: true) }
-  
+
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -65,31 +65,31 @@ class User < ActiveRecord::Base
   def full_name
     [first_name, last_name].join(' ')
   end
-  
+
   def can_manager? blog
     admin? || blog.user == self || ( self && blog.editors.exists?(user: self))
   end
-  
+
   def can_remove_comment? comment
     can_manager?(comment.post.blog) || ( self && comment.user == self )
   end
-  
+
   def facebook_user?
     self.provider == "facebook"
   end
-    
+
   def to_param
     username
   end
-  
+
   def self.find(input)
     find_by_username(input)
   end
-  
+
   def post_count
     posts.count
   end
-  
+
   def comment_count
    comments.count
   end
