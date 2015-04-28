@@ -19,12 +19,12 @@ FactoryGirl.define do
     end
   end
 
-    factory :admin, class: User  do
-      username  'Admin'
-      email     'admin@frigg.com'
-      password  'admin123'
-      password_confirmation 'admin123'
-      admin     true
-      confirmed_at Date.today
-    end
+  factory :admin, class: User  do
+    username  'Admin'
+    email     'admin@frigg.com'
+    password  'admin123'
+    password_confirmation 'admin123'
+    admin     true
+    confirmed_at Date.today
+  end
 end
