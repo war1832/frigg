@@ -15,7 +15,6 @@ gem 'devise'
 gem "ckeditor"
 gem 'paperclip'
 gem 'will_paginate'
-gem 'acts_as_follower'
 gem "recaptcha"
 gem 'omniauth-facebook'
 gem "html_truncator", "~>0.2"
