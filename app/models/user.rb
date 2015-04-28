@@ -6,11 +6,15 @@ class User < ActiveRecord::Base
   has_many :comments, through: :posts
   has_many :ratings, dependent: :destroy
   has_many :editors, dependent: :destroy
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :login
-
-  acts_as_followable
-  acts_as_follower
-
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauth_providers => [:facebook],
@@ -64,6 +68,18 @@ class User < ActiveRecord::Base
   def gravatar_url size
     hash = Digest::MD5.hexdigest(email.downcase)
     "http://www.gravatar.com/avatar/#{hash}?s=#{size}&r=pg&d=mm"
+  end
+
+  def follow user
+    active_relationships.create(followed_id: user.id)
+  end
+
+  def stop_following user
+    active_relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    following.include?(user)
   end
 
   def full_name
