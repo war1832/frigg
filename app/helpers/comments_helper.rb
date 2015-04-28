@@ -1,6 +1,6 @@
 module CommentsHelper
   def comment_avatar_url(user)
-    user ? get_gravatar(user, 80) : "anonymous.jpeg"
+    user ? user.gravatar_url(80) : "anonymous.jpeg"
   end
 
   private

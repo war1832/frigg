@@ -93,7 +93,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
-    gravtastic (3.2.6)
     hashie (3.4.1)
     hike (1.2.3)
     html_truncator (0.4.1)
@@ -253,7 +252,6 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
-  gravtastic
   html_truncator (~> 0.2)
   jbuilder (~> 2.0)
   jquery-rails

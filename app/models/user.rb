@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
+  require 'digest/md5'
+
   has_many :blogs, dependent: :destroy
   has_many :posts, through: :blogs
   has_many :comments, through: :posts
   has_many :ratings, dependent: :destroy
   has_many :editors, dependent: :destroy
   attr_accessor :login
-
-  include Gravtastic
-  gravtastic
 
   acts_as_followable
   acts_as_follower
@@ -60,6 +59,11 @@ class User < ActiveRecord::Base
 
   def send_user_notifier post
     UserNotifier.new_post(post).deliver_later
+  end
+
+  def gravatar_url size
+    hash = Digest::MD5.hexdigest(email.downcase)
+    "http://www.gravatar.com/avatar/#{hash}?s=#{size}&r=pg&d=mm"
   end
 
   def full_name
