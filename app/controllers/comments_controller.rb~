@@ -4,22 +4,21 @@ class CommentsController < ApplicationController
   before_action :set_post
   before_action :authenticate_user!, only: [:destroy]
   before_action :check_permission, only: [:destroy]
-
+  before_action :verify_captcha, only: [:create]
 
   def create
     comment = @post.comments.build comment_params
     comment.user = current_user
     respond_to do |format|
-      if verify_recaptcha
+      if comment.valid?
         if comment.save
          format.html { redirect_to blog_post_path(@blog, @post) }
         else
           format.html { redirect_to( blog_post_path(@blog, @post),
-                      :flash => { :error => 'Invalid comment.' } ) }
+                      :flash => { :error => 'Error to save comment. Please try again.' } ) }
         end
       else
-          format.html { redirect_to( blog_post_path(@blog, @post),
-              :flash => { :error => 'Are you bot?' } ) }
+          format.html { redirect_to( contact_new_path, :flash => { :error => 'Invalid comment.' } ) }
       end
     end
   end
@@ -49,6 +48,13 @@ class CommentsController < ApplicationController
   def check_permission
     unless current_user && current_user.can_remove_comment?(@comment)
       head :unauthorized
+    end
+  end
+  def verify_captcha
+    unless verify_recaptcha
+      respond_to do |format|
+        format.html { redirect_to (blog_post_path(@blog, @post), :flash => { :error => 'Are you bot?.' } ) }
+      end
     end
   end
 end
