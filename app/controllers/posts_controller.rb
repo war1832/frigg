@@ -3,10 +3,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
   before_action :check_permission, except: [:show]
-  
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    render 'post_not_found'
-  end
 
   def index
     @posts = @blog.posts.order(created_at: :DESC).paginate(page: params[:page], per_page: 5)
@@ -65,20 +61,20 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-    
+
     def set_blog
       @blog = Blog.find(params[:blog_id])
-      render '/blogs/blog_not_found' unless @blog
+      raise ActiveRecord::RecordNotFound unless @blog
     end
-    
+
     def post_params
       params.require(:post).permit(:title, :body)
     end
-    
+
     def get_rank
-      @rating = Rating.find_or_create_by(post: @post, user: current_user) 
+      @rating = Rating.find_or_create_by(post: @post, user: current_user)
     end
-    
+
     def check_permission
       unless current_user.can_manager? @blog
         head :unauthorized

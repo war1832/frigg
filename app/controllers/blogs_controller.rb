@@ -2,9 +2,6 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :search]
   before_action :check_permission, only: [:edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    render 'blog_not_found'
-  end
 
   def index
     @blogs = Blog.where(user: current_user)
@@ -57,7 +54,7 @@ class BlogsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def search
     @blogs = Blog.search(params[:search]).order("created_at DESC") if params[:search]
   end
@@ -66,7 +63,7 @@ class BlogsController < ApplicationController
 
     def set_blog
       @blog = Blog.find(params[:id])
-      render 'blog_not_found' unless @blog
+      raise ActiveRecord::RecordNotFound unless @blog
     end
 
     def blog_params

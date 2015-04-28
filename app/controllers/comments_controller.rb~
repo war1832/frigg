@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])
-    render '/blogs/blog_not_found' unless @blog
+    raise ActiveRecord::RecordNotFound, "Blog not found." unless @blog
   end
   def set_post
     @post = Post.find(params[:post_id])
@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
   def verify_captcha
     unless verify_recaptcha
       respond_to do |format|
-        format.html { redirect_to (blog_post_path(@blog, @post), :flash => { :error => 'Are you bot?.' } ) }
+        format.html { redirect_to( blog_post_path(@blog, @post), :flash => { :error => 'Are you bot?.' } ) }
       end
     end
   end

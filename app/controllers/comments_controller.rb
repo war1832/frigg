@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
   end
   def set_blog
     @blog = Blog.find(params[:blog_id])
-    render '/blogs/blog_not_found' unless @blog
+    raise ActiveRecord::RecordNotFound unless @blog
   end
   def set_post
     @post = Post.find(params[:post_id])

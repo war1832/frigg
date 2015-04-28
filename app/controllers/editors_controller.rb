@@ -16,7 +16,7 @@ class EditorsController < ApplicationController
     @editor = @blog.editors.build
     user = User.find_by_email params[:user_email]
     respond_to do |format|
-      if user 
+      if user
         @editor.user = user
           if @editor.save
             format.html { redirect_to blog_editors_path }
@@ -42,13 +42,13 @@ class EditorsController < ApplicationController
   private
     def set_blog
       @blog = Blog.find(params[:blog_id])
-      render '/blogs/blog_not_found' unless @blog
+      raise ActiveRecord::RecordNotFound unless @blog
     end
 
     def set_editor
       @editor = Editor.find(params[:id])
     end
-    
+
     def check_permission
       unless current_user.admin? || @blog.user == current_user
         head :unauthorized

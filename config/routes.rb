@@ -21,14 +21,14 @@ Rails.application.routes.draw do
     end
     resources :editors, only: [:index, :new, :create, :destroy]
   end
-  
+
   resources :ratings, only: :update
-  
+
   resources :users do
     resources :users, only: [:index, :show, :edit]
     resources :follows, :only => [:create, :destroy]
   end
-  
+
   mount Ckeditor::Engine => '/ckeditor'
   match '*unmatched_route', :to => 'application#not_found', :via => :all
 end
