@@ -74,6 +74,13 @@ RSpec.describe User, type: :model do
     comment = post.comments.create(body: 'Comment.', user: user_comment)
     expect(user_comment.can_remove_comment?(comment)).to eq(true)
   end
+
+  it 'user followers' do
+    user_1 = create(:user)
+    user_2 = create(:user, :user_2)
+    user_2.follow(user_1)
+    expect(user_1.followers.count).to eq(1)
+  end
 end
 
 def add_blog user

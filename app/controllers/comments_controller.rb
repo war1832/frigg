@@ -4,13 +4,13 @@ class CommentsController < ApplicationController
   before_action :set_post
   before_action :authenticate_user!, only: [:destroy]
   before_action :check_permission, only: [:destroy]
-  
-  
+
+
   def create
     comment = @post.comments.build comment_params
     comment.user = current_user
-    respond_to do |format| 
-      if verify_recaptcha 
+    respond_to do |format|
+      if verify_recaptcha
         if comment.save
          format.html { redirect_to blog_post_path(@blog, @post) }
         else
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     @comment.destroy
     respond_to do |format|

@@ -13,8 +13,7 @@ feature 'Contact form' do
   end
 
   scenario 'No captcha confirmation' do
-   visit root_path
-   click_on 'Contact'
+   visit contact_new_path
    click_button 'Submit'
    expect(page).to have_content 'Invalid message.'
   end
