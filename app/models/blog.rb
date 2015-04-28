@@ -7,23 +7,23 @@ class Blog < ActiveRecord::Base
   before_save do
     self.name.downcase!
   end
-  
+
   validates :name, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/,
-                                               message: "invalid name" }
+                                               message: "Invalid name." }
   def to_param
     name
   end
-  
+
   def self.find(input)
     find_by_name(input)
   end
-  
+
   def self.search(search)
     param =  search.downcase
-    where("lower(title) LIKE ? OR lower(second_title) LIKE ? OR lower(name) LIKE ? ", 
-                             "%#{ param }%","%#{ param }%", "%#{ param }%") 
+    where("lower(title) LIKE ? OR lower(second_title) LIKE ? OR lower(name) LIKE ? ",
+                             "%#{ param }%","%#{ param }%", "%#{ param }%")
   end
-  
+
   def exists?
     Blog.exists?(id: id)
   end
