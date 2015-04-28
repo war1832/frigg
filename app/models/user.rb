@@ -45,10 +45,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_user_notifier post
-    UserNotifier.new_post(post).deliver_later
-  end
-
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -60,6 +56,10 @@ class User < ActiveRecord::Base
         where(username: conditions[:username]).first
       end
     end
+  end
+
+  def send_user_notifier post
+    UserNotifier.new_post(post).deliver_later
   end
 
   def full_name
