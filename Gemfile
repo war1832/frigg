@@ -18,6 +18,7 @@ gem 'will_paginate'
 gem "recaptcha"
 gem 'omniauth-facebook'
 gem "html_truncator", "~>0.2"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

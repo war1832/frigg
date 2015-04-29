@@ -1,6 +1,7 @@
 <h2>
   <%= sanitize(@post.title) %>
 </h2>
+<%= render :partial => 'share', locals: {post: @post}  %>
 <p class="lead">
   by <%= link_to @post.user.username.capitalize, @post.user %>
 </p>
@@ -10,6 +11,7 @@
 <%= show_rating %>
 <hr>
 <%= sanitize(@post.body) %>
+
 <hr>
 <%= show_user_rating %>
 <hr>

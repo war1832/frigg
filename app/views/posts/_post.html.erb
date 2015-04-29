@@ -2,9 +2,10 @@
   <h2>
     <%= link_to sanitize(post.title), post %>
   </h2>
+  <%= render :partial => 'posts/share', locals: {post: post}  %>
   <p>
     <span class="glyphicon glyphicon-user"></span> Posted by: <%= link_to post.user.username.capitalize, post.user %> |
-    <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %> 
+    <span class="glyphicon glyphicon-time"></span> Posted on: <%= time_ago_in_words post.updated_at %>
   </p>
   <hr>
   <%= HTML_Truncator.truncate(post.body, 200, :length_in_chars => true).html_safe %>
