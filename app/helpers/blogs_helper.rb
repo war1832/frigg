@@ -10,18 +10,23 @@ module BlogsHelper
   end
 
   def share_btn_facebook post
-    if post
-    url_encode = ERB::Util.url_encode(request.original_url)
-      url = "https://www.facebook.com/dialog/feed?app_id=1434451423519888&display=popup&caption=#{post.title}&link=#{url_encode}&redirect_uri=#{url_encode}"
-      link_to(raw('<i class="fa fa-facebook"></i>'), url, { target: '_blank',
-                                                    class: 'btn btn-primary' } )
-    end
+    url = "https://www.facebook.com/dialog/feed?app_id=1434451423519888&display=popup&caption=#{post.title}&link=#{current_url_encode}&redirect_uri=#{current_url_encode}"
+    build_btn url, post, 'facebook'
   end
   def share_btn_twitter post
+    url = "http://twitter.com/share?url=#{current_url_encode}&text=#{post.title}"
+    build_btn url, post, 'twitter'
+  end
+
+  private
+  def build_btn url, post, social
     if post
-      url = "http://twitter.com/share?url=#{ERB::Util.url_encode(request.original_url)}&text=#{post.title}"
-      link_to(raw('<i class="fa fa-twitter"></i>'), url, { target: '_blank',
-                                                       class: 'btn btn-info' } )
+      body = "<i class='fa fa-#{social}'></i>"
+       link_to(raw(body), url, { target: '_blank', class: 'btn btn-info' } )
     end
+  end
+
+  def current_url_encode
+    url_encode = ERB::Util.url_encode(request.original_url)
   end
 end
