@@ -10,7 +10,7 @@ module BlogsHelper
   end
 
   def share_btn_facebook post
-    url = "https://www.facebook.com/dialog/feed?app_id=1434451423519888&display=popup&caption=#{post.title}&link=#{current_url_encode}"
+    url = "https://www.facebook.com/dialog/feed?app_id=1434451423519888&display=popup&caption=#{post.title}&link=#{current_url_encode}&redirect_uri=#{current_url_encode}"
     build_btn url, post, 'facebook'
   end
   def share_btn_twitter post
