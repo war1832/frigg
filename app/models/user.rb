@@ -62,7 +62,12 @@ class User < ActiveRecord::Base
   end
 
   def send_user_notifier post
-    UserNotifier.new_post(post).deliver_later
+    begin
+      UserNotifier.new_post(post).deliver_later
+    rescue Exception => e
+      puts e.message
+      puts e.backtrace.inspect
+    end
   end
 
   def gravatar_url size
