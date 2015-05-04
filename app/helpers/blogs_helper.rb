@@ -27,6 +27,6 @@ module BlogsHelper
   end
 
   def current_url_encode
-    url_encode = ERB::Util.url_encode(request.original_url)
+    ERB::Util.url_encode(request.original_url)
   end
 end
