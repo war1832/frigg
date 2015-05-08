@@ -19,6 +19,8 @@ gem "recaptcha"
 gem 'omniauth-facebook'
 gem "html_truncator", "~>0.2"
 gem "font-awesome-rails"
+gem 'rails_12factor'
+gem 'thin'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
