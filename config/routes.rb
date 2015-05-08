@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'home/services'
   post 'contact/create'
 
-
   namespace :api, defaults: { format: 'json' } do
     resources :blogs, :path => "b", :only => [:show]
     resources :posts, :only => [:show]
@@ -24,8 +23,7 @@ Rails.application.routes.draw do
 
   resources :ratings, only: :update
 
-  resources :users do
-    resources :users, only: [:index, :show, :edit]
+  resources :users, only: [:index, :show, :edit] do
     resources :follows, :only => [:create, :destroy]
   end
 
