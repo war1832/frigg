@@ -62,7 +62,7 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <p class="text-center">
-                                            <%= image_tag avatar_url(current_user, 90) %>
+                                            <%= link_to image_tag(avatar_url(current_user, 90)), user_path(current_user) %>
                                         </p>
                                     </div>
                                     <div class="col-lg-8">
@@ -115,7 +115,7 @@
                 <%= form_tag search_path, :method => 'post' do %>
                     <h4>Blog Search</h4>
                     <div class="input-group">
-                        <%= text_field_tag :search, params[:search], :class => "form-control" %>
+                        <%= text_field_tag :search, params[:search], :required => true, :class => "form-control" %>
                         <span class="input-group-btn">
                             <button class="btn btn-default" id="search_button" type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
