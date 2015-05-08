@@ -16,19 +16,19 @@
    <div class="form-group">
      <%= f.label :name, class: 'col-sm-2 control-label' %>
      <div class="col-sm-6">
-        <%= f.text_field :name, autofocus: true, class: "form-control"  %>
+        <%= f.text_field :name, :required => true, class: "form-control"  %>
      </div>
    </div>
 
    <div class="form-group">
      <%= f.label :email, class: 'col-sm-2 control-label' %>
      <div class="col-sm-6">
-       <%= f.email_field :email, class: "form-control" %>
+       <%= f.email_field :email, :required => true, class: "form-control" %>
      </div>
    </div>
-   
+
    <div class="form-group">
-     <%= f.text_area :message, :class => "form-control", :rows => "10" %>
+     <%= f.text_area :message, :required => true, :class => "form-control", :rows => "10" %>
    </div>
     <%= recaptcha_tags %>
     <hr>
