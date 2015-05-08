@@ -15,7 +15,7 @@ class ContactController < ApplicationController
           format.html { redirect_to contact_new_path,
             :flash => { :error => 'Error to send message. Please try again.' } }
         end
-      else:D
+      else
         format.html { redirect_to( contact_new_path, :flash => { :error => 'Invalid message.' } ) }
       end
     end
